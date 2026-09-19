@@ -1,0 +1,55 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "sessoes": {
+      "$pin": {
+        ".validate": "$pin.matches(/^[0-9]{6}$/) && newData.hasChildren(['donoTv', 'expiraEm'])",
+
+        ".read": "auth != null",
+
+        ".write": "auth != null && (!data.exists() || data.child('donoTv').val() === auth.uid || data.child('expiraEm').val() < now)",
+
+        "donoTv": {
+          ".validate": "newData.isString() && newData.val() === auth.uid"
+        },
+
+        "expiraEm": {
+          ".validate": "newData.isNumber()"
+        },
+
+        "urlAtual": {
+          ".validate": "newData.isString() && newData.val().length <= 2048"
+        },
+
+        "celularUid": {
+          ".validate": "newData.isString()",
+          ".write": "auth != null && ((!data.exists() && newData.val() === auth.uid && now < data.parent().child('expiraEm').val()) || (data.val() === auth.uid && !newData.exists()))"
+        },
+
+        "controle": {
+          ".validate": "newData.hasChildren(['seq', 'tipo', 'valor'])",
+          ".write": "auth != null && data.parent().child('celularUid').val() === auth.uid && now < data.parent().child('expiraEm').val()",
+
+          "seq": {
+            ".validate": "newData.isNumber()"
+          },
+          "tipo": {
+            ".validate": "newData.isString() && (newData.val() === 'texto' || newData.val() === 'url' || newData.val() === 'acao')"
+          },
+          "valor": {
+            ".validate": "newData.isString() && newData.val().length <= 2000"
+          },
+          "$outro": {
+            ".validate": false
+          }
+        },
+
+        "$outro": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

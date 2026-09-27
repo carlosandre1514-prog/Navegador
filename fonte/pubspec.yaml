@@ -1,0 +1,31 @@
+name: navegador_hibrido
+description: Navegador híbrido para Android (celular e Android TV) com pareamento remoto por PIN.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Motor de renderização (Chromium/Blink do sistema)
+  flutter_inappwebview: ^6.1.5
+
+  # Pareamento em tempo real (celular <-> TV)
+  # Faixas de versão amplas: o pub escolhe a mais nova compatível com o seu Flutter.
+  firebase_core: ">=3.6.0 <5.0.0"
+  firebase_auth: ">=5.3.1 <7.0.0"
+  firebase_database: ">=11.1.4 <13.0.0"
+
+  # Detecta se o aparelho é uma Android TV
+  device_info_plus: ">=10.1.0 <14.0.0"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ">=4.0.0 <7.0.0"
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55916264760",
+    "project_id": "navegador-f06a8",
+    "storage_bucket": "navegador-f06a8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55916264760:android:3c0d9deab822d0806a15cd",
+        "android_client_info": {
+          "package_name": "com.meunavegador.navegador_hibrido"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGCTp0oE1F5WkWmfrEGVckvlaaDEzQh-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
